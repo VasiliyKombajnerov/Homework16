@@ -5,6 +5,6 @@ function checkUsersData(){
    const lastName = url.searchParams.get('lastName');
    const email = url.searchParams.get('email');
    if (!name || !lastName || !email) {
-      location.href = 'main.html';
+      location.href = 'index.html';
    }
 };

@@ -13,7 +13,7 @@
       init() {
          this.userData = JSON.parse(sessionStorage.getItem('userData'));
          if (this.userData) {
-            // console.log(this.userData);
+            console.log(this.userData);
 
             const xhr = new XMLHttpRequest();
             xhr.open('GET', 'https://testologia.ru/get-quiz?id=' + this.userData.id, false);
@@ -22,13 +22,13 @@
                try {
                   this.quiz = JSON.parse(xhr.responseText);
                } catch (e) {
-                  location.href = 'main.html';
+                  location.href = 'index.html';
                }
             } else {
-               location.href = 'main.html';
+               location.href = 'index.html';
             }
          } else {
-            location.href = 'main.html';
+            location.href = 'index.html';
          }
          this.getCorrectAnswers();
          this.showDataTestComplete();
@@ -106,11 +106,11 @@
                try {
                   this.correctAnswers = JSON.parse(xhr.responseText);
                } catch (e) {
-                  location.href = 'main.html';
+                  location.href = 'index.html';
                }
             }
          } else {
-            location.href = 'main.html'
+            location.href = 'index.html'
          }
       }
    }

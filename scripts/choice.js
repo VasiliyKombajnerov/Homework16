@@ -12,12 +12,12 @@
             try {
                this.quizzes = JSON.parse(xhr.responseText)
             } catch (e) {
-               location.href = 'main.html';
+               location.href = 'index.html';
             }
             this.prossesQuizzes();
 
          } else {
-            location.href = 'main.html';
+            location.href = 'index.html';
          }
       },
       prossesQuizzes() {

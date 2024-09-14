@@ -12,6 +12,7 @@
       progressBarElement: null,
       userResult: [],
       isInputChecked: false,
+      userScore: null,
 
       init() {
          checkUsersData();
@@ -27,16 +28,16 @@
                try {
                   this.quiz = JSON.parse(xhr.responseText);
                } catch (e) {
-                  location.href = 'main.html';
+                  location.href = 'index.html';
                }
                this.startQuiz();
 
             } else {
-               location.href = 'main.html';
+               location.href = 'index.html';
             }
 
          } else {
-            location.href = 'main.html';
+            location.href = 'index.html';
          }
          // console.log(this.isInputChecked)
       },
@@ -225,20 +226,19 @@
             results: this.userResult
          }));
          if (xhr.status === 200 && xhr.responseText) {
-            let result = null;
-            try {
-               result = JSON.parse(xhr.responseText)
+                try {
+               this.userScore = JSON.parse(xhr.responseText)
             } catch (e) {
-               location.href = 'main.html';
+               location.href = 'index.html';
             }
-            if (result) {
-               console.log(result);
-               location.href = 'result.html?score=' + result.score + '&total=' + result.total;
+            if (this.userScore) {
+            
+               location.href = 'result.html?score=' + this.userScore.score + '&total=' + this.userScore.total;
 
             }
 
          } else {
-            location.href = 'main.html';
+            location.href = 'index.html';
          }
          //homework16
          sessionStorage.setItem('userData', (JSON.stringify({
@@ -246,7 +246,8 @@
             lastName: lastName,
             email: email,
             results: this.userResult,
-            id: id
+            id: id,
+            userScore: this.userScore
          })));
 
       }
